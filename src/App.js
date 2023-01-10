@@ -59,6 +59,17 @@ function App() {
     }
   };
 
+  const deleteFromCart = (item) => {
+    dataList.map(currentItem => {
+      if (currentItem.id === item.id) {
+        currentItem.avalQty += item.qty
+      }
+      return currentItem;
+    })
+    console.log(dataList);
+    setCartItems(cartItems.filter((x) => x.id !== item.id));
+  }
+
   return (
     <div className="App">
       <Header></Header>
@@ -67,7 +78,7 @@ function App() {
         <Main dataList={dataList} onAdd={addInCart}></Main>
 
 
-        <Basket cartItems={cartItems} onAdd={addInCart} onRemove={removeFromCart}></Basket>
+        <Basket cartItems={cartItems} onAdd={addInCart} onRemove={removeFromCart} onDelete={deleteFromCart}></Basket>
       </div>
     </div>
   );

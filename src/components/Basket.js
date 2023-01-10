@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Basket(props) {
-  const { cartItems, onAdd, onRemove} = props;
+  const { cartItems, onAdd, onRemove, onDelete} = props;
   const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.itemPrice, 0);
   return (
     <aside className="block col-1">
@@ -18,6 +18,9 @@ export default function Basket(props) {
               </button>{' '}
               <button onClick={() => onAdd(product)} className="add">
                 +
+              </button>
+              <button onClick={() => onDelete(product)} className="add">
+                Del
               </button>
             </div>
             <div className="col-2 text-right">
