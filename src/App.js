@@ -70,6 +70,18 @@ function App() {
     setCartItems(cartItems.filter((x) => x.id !== item.id));
   }
 
+  const emptyCart = () => {
+    dataList.map(currentItem => {
+      cartItems.map(cartItem => {
+        if (currentItem.id === cartItem.id) {
+          currentItem.avalQty += cartItem.qty
+        }
+      })
+      return currentItem;
+    })
+    setCartItems([])
+  }
+
   return (
     <div className="App">
       <Header></Header>
@@ -78,7 +90,7 @@ function App() {
         <Main dataList={dataList} onAdd={addInCart}></Main>
 
 
-        <Basket cartItems={cartItems} onAdd={addInCart} onRemove={removeFromCart} onDelete={deleteFromCart}></Basket>
+        <Basket cartItems={cartItems} onAdd={addInCart} onRemove={removeFromCart} onDelete={deleteFromCart} onEmpty={emptyCart}></Basket>
       </div>
     </div>
   );
