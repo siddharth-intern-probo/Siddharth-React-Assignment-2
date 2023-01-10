@@ -66,7 +66,6 @@ function App() {
       }
       return currentItem;
     })
-    console.log(dataList);
     setCartItems(cartItems.filter((x) => x.id !== item.id));
   }
 
